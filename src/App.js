@@ -1,5 +1,7 @@
 import React from "react";
+import FooterIcon from "./icons";
 import './App.css';
+
 
 function App() {
   return (
@@ -34,7 +36,19 @@ function App() {
         </ul>
       </div>
 
-      <footer className="app-footer"></footer>
+      <footer className="app-footer">
+        <div className="image-container">
+          <img src="./amy.png" alt="the word Amy written in letters cutout from magazines" />
+          <div className="icons">
+            <p><a aria-label="View Amy's Youtube channel" href="https://www.youtube.com/@amy.spencerproject/featured"
+          target="_blank" data-position="top" data-tooltip="View Amy's Youtube channel" rel="noreferrer"
+         ><i className="fa fa-youtube"></i><a aria-label="Amy's Youtube channel"
+            href="https://www.youtube.com/@amy.spencerproject/featured" target="_blank"
+            rel="noreferrer">youtube.com/@amy.spencerproject</a></a></p>
+          </div>
+          <FooterIcon />
+        </div>
+      </footer>
     </div>
   );
 }

@@ -4,7 +4,8 @@
 }
 
 body {
-  background-color: white;
+  background-color: F1E6E6;
+  color: #191826;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -27,16 +28,15 @@ img {
 }
 
 .notes-container {
-  background-color: #cce6ff;
-
+  background-color: #F1E6E6;
 }
 
 .notes-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 10px;
-  margin: 0px;
+  padding: 1rem;
+  margin: 0;
 }
 
 .app-header {
@@ -50,39 +50,56 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0 0 10px;
+  flex-flow: column;
+  width: 80%;
+  margin-bottom: 1rem;
 }
 
-.search,
 .add-new {
-  font-size: 14px;
-  padding: 5px;
-  margin: 8px;
+  background-color: #EBD584;
+  border: solid 1px #4f4e51;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bolder;
+  outline: none;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.add-new,
+.search {
+  padding: 2.0rem;
+  width: 90%;
 }
 
 .search {
+  border-radius: 10px;
+  font-size: 1rem;
+  margin: 0.5rem;
   flex-grow: 1;
-  max-width: 300px;
+  background-color: #91E0E5;
+  border: none;
+  text-align: center;
+  color: #191826;
 }
 
-.add-new {
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 10px;
-  font-weight: bolder;
-  background-color: #cce6ff;
-  outline: none;
+.search::placeholder {
+  color: #191826;
+  font-size: 1rem;
 }
 
 .note {
   font-family: "Permanent Marker", cursive;
-  width: 200px;
-  height: 200px;
+  width: 75%;
+  height: 250px;
+  /* max-height: 100vh; */
   margin: 10px;
-  background-color: #ffe6e6;
-  border: 1px solid grey;
-  box-shadow: 2px 2px 3px lightgrey;
-  border-radius: 5px;
+  background-color: #FCFAF9;
+  border: 1px solid #AA305C;
+  border-color: #AA305C;
+  box-shadow: 2px 2px 3px #AA305C;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -97,13 +114,24 @@ img {
 }
 
 .note__title {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
+  border-bottom: 1px solid #AA305C;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #AA305C;
+}
+
+.note__title::placeholder {
+  color: #AA305C;
+  text-transform: uppercase;
 }
 
 .note__description {
+  border: none;
   flex-grow: 1;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .note__delete {
@@ -112,10 +140,19 @@ img {
   right: 0px;
   font-size: 20px;
   color: lightgrey;
-  padding: 5px;
+  padding: 0.25rem;
 }
 
 .note__delete:hover {
-  color: black;
+  color: #AA305C;
   cursor: pointer;
+}
+
+footer {
+  background-color: #AA305C;
+}
+
+.app-footer {
+  display: flex;
+  justify-content: center;
 }
