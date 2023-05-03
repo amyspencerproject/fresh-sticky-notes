@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="app-header">
-        <div className="image-container">
+        <div className="header-image-container">
         <picture>
           <source media="(min-width: 1000px)" srcSet="./notes-desktop.png" />
           <source media="(min-width: 768px)" srcSet="./notes-780.png" />
@@ -41,12 +41,12 @@ function App() {
       </div>
 
       <footer className="app-footer">
-        <div className="image-container">
+        <div className="footer-image-container">
           <img src="./by-amy.png" alt="the word Amy written in letters cutout from magazines" />
-          <div className="icons">
+        </div>
+        <div className="icons">
           <FooterIcon />
           </div>
-        </div>
       </footer>
     </div>
   );

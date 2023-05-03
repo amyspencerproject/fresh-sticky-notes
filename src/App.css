@@ -1,9 +1,87 @@
-* {
+/* ==========================================================================
+   CSS Reset by Andy Bell - https://andy-bell.co.uk/a-modern-css-reset/
+   ========================================================================== */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
 body {
-  background-color: #F1E6E6;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Base Styles - mobile first styling
+   ========================================================================== */
+
+body {
+  background-color: #C1EDF0;
   color: #191826;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
@@ -18,25 +96,10 @@ textarea {
   resize: none;
 }
 
-.image-container {
+/* ****** Header ****** */
+
+.header-image-container {
   width: 75%;
-}
-
-img {
-  display: block;
-  width: 100%;
-}
-
-.notes-container {
-  background-color: #C1EDF0;
-}
-
-.notes-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 1rem;
-  margin: 0;
 }
 
 .app-header {
@@ -58,7 +121,7 @@ img {
 .add-new {
   background-color: #F8D038;
   border: solid 4px #66629D;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   cursor: pointer;
   font-weight: bolder;
   outline: none;
@@ -69,16 +132,15 @@ img {
 
 .add-new,
 .search {
-  /* font-family: "Neucha", cursive; */
-  /* font-family: 'Montserrat', sans-serif; */
+  border-radius: 20px;
   font-family: Arial, Helvetica, sans-serif;
   padding: 2.0rem;
   width: 90%;
 }
 
 .search {
-  border-radius: 10px;
-  font-size: 1rem;
+
+  font-size: 1.25rem;
   margin: 0.5rem;
   flex-grow: 1;
   background-color: #91E0E5;
@@ -93,11 +155,24 @@ img {
   font-weight: bolder;
 }
 
+/* ****** Notes Canvas ****** */
+
+.notes-container {
+  background-color: #C1EDF0;
+}
+
+.notes-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  margin: 0;
+}
+
 .note {
   width: 75%;
-  height: 250px;
-  /* max-height: 100vh; */
-  margin: 10px;
+  height: 15rem;
+  margin: 1rem;
   background-color: #fceeb5;
   border: 1px solid #AA305C;
   border-color: #AA305C;
@@ -153,22 +228,27 @@ img {
   cursor: pointer;
 }
 
+/* ****** Footer ****** */
+
 footer {
   background-color: #AA305C;
 }
 
 .app-footer {
   display: flex;
+  flex-flow: column wrap;
   justify-content: center;
+  align-items: center;
   padding-bottom: 2rem;
   padding-top: 1.5rem;
 }
 
+.footer-image-container {
+  width: 75%;
+}
+
 .footer-icons {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
   margin: 3rem 0;
 }
 
@@ -178,6 +258,7 @@ footer {
   height: 5rem;
   width: 5rem;
   padding: 2rem;
+  margin: 0 1rem;
   font-size: 3rem;
   text-align: center;
   display: flex;
@@ -195,4 +276,101 @@ footer {
 
 a {
   color: #AA305C;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+
+/* ----------- Tablets larger than 768px wide ----------- */
+@media only screen and (min-width: 768px) {
+
+  /* ****** Header ****** */
+  .add-new {
+    width: 45%;
+    font-size: 2.25rem;
+  }
+
+
+  .search,
+  .search::placeholder {
+    font-size: 2rem;
+  }
+
+  .header-image-container {
+    width: 75%;
+  }
+
+  /* ***** Notes Canvas ****** */
+
+  .note {
+    width: 40%;
+  }
+
+  /* ***** Footer ****** */
+  .footer-image-container {
+    width: 50%;
+  }
+
+  .footer-icons-sphere,
+  .footer-icons-sphere-drk {
+    margin: 0 2.0rem;
+  }
+
+
+
+
+}
+
+/* ----------- Desktop Screenlarger than 1200px wide ----------- */
+@media only screen and (min-width: 1200px) {
+
+  /* ****** Header ****** */
+  .header-image-container {
+    width: 65%;
+  }
+
+  .app-header__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    width: 80%;
+    margin-bottom: 2.5rem;
+  }
+
+  .add-new {
+    margin: 0 1.5rem;
+  }
+
+  .search {
+    padding: 2.20rem;
+  }
+
+  /* ***** Notes Canvas ****** */
+
+  .note {
+    width: 25%;
+  }
+
+  /* ***** Footer ****** */
+
+  .footer-image-container {
+    width: 30%;
+  }
+
+  .app-footer {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    /* padding: 0 1.5rem; */
+  }
+
+  .footer-image-container {
+    margin-left: 6rem;
+  }
+
+  .icons {
+    margin-right: 6rem;
+  }
 }
