@@ -22,6 +22,8 @@ The challenge is to build this app as a greenfield project, use React Hooks, and
 - React Images 
     - [Levelup Blog Post](https://levelup.gitconnected.com/display-images-in-react-8ff1f5b1cf9a)
     - [Stack Overflow Post](https://stackoverflow.com/questions/37644265/correct-path-for-img-on-react-js)
+- [Styling the placeholder](https://medium.com/@samanthaming/styling-placeholder-text-with-css-9a2a608b68bc)
+- [Fontawesome with React](https://dev.to/davidemaye/how-to-set-up-font-awesome-in-react-5a8d)
 
 ## My process
 - started with mapping out which components would be container components and presentational components based on what the app should do and where the user data would flow.

@@ -8,7 +8,11 @@ function App() {
     <div className="App">
       <header className="app-header">
         <div className="image-container">
-          <img src="./notes-780.png" alt="the word notes written in letters cutout from magazines" />
+        <picture>
+          <source media="(min-width: 1000px)" srcSet="./notes-desktop.png" />
+          <source media="(min-width: 768px)" srcSet="./notes-780.png" />
+          <img src="./notes-400.png" alt="the word notes written in letters cutout from magazines" />
+        </picture>
         </div>
         <aside className="app-header__controls">
           <button className="add-new">+ New Note</button>
@@ -38,15 +42,10 @@ function App() {
 
       <footer className="app-footer">
         <div className="image-container">
-          <img src="./amy.png" alt="the word Amy written in letters cutout from magazines" />
+          <img src="./by-amy.png" alt="the word Amy written in letters cutout from magazines" />
           <div className="icons">
-            <p><a aria-label="View Amy's Youtube channel" href="https://www.youtube.com/@amy.spencerproject/featured"
-          target="_blank" data-position="top" data-tooltip="View Amy's Youtube channel" rel="noreferrer"
-         ><i className="fa fa-youtube"></i><a aria-label="Amy's Youtube channel"
-            href="https://www.youtube.com/@amy.spencerproject/featured" target="_blank"
-            rel="noreferrer">youtube.com/@amy.spencerproject</a></a></p>
-          </div>
           <FooterIcon />
+          </div>
         </div>
       </footer>
     </div>

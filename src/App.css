@@ -1,11 +1,11 @@
 * {
   box-sizing: border-box;
-  /* border: red dotted; */
 }
 
 body {
-  background-color: F1E6E6;
+  background-color: #F1E6E6;
   color: #191826;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -19,7 +19,7 @@ textarea {
 }
 
 .image-container {
-  width: 80%;
+  width: 75%;
 }
 
 img {
@@ -28,7 +28,7 @@ img {
 }
 
 .notes-container {
-  background-color: #F1E6E6;
+  background-color: #C1EDF0;
 }
 
 .notes-list {
@@ -56,8 +56,8 @@ img {
 }
 
 .add-new {
-  background-color: #EBD584;
-  border: solid 1px #4f4e51;
+  background-color: #F8D038;
+  border: solid 4px #66629D;
   border-radius: 10px;
   cursor: pointer;
   font-weight: bolder;
@@ -69,6 +69,9 @@ img {
 
 .add-new,
 .search {
+  /* font-family: "Neucha", cursive; */
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: Arial, Helvetica, sans-serif;
   padding: 2.0rem;
   width: 90%;
 }
@@ -79,23 +82,23 @@ img {
   margin: 0.5rem;
   flex-grow: 1;
   background-color: #91E0E5;
-  border: none;
+  border: solid 4px #66629D;
   text-align: center;
   color: #191826;
 }
 
 .search::placeholder {
   color: #191826;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-weight: bolder;
 }
 
 .note {
-  font-family: "Permanent Marker", cursive;
   width: 75%;
   height: 250px;
   /* max-height: 100vh; */
   margin: 10px;
-  background-color: #FCFAF9;
+  background-color: #fceeb5;
   border: 1px solid #AA305C;
   border-color: #AA305C;
   box-shadow: 2px 2px 3px #AA305C;
@@ -107,13 +110,14 @@ img {
 
 .note__title,
 .note__description {
-  font-family: "Permanent Marker", cursive;
   width: 100%;
   padding: 8px 14px;
   background: transparent;
 }
 
 .note__title {
+  /* font-family: "Neucha", cursive; */
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: bold;
   border-bottom: 1px solid #AA305C;
@@ -132,6 +136,7 @@ img {
   border: none;
   flex-grow: 1;
   font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .note__delete {
@@ -139,7 +144,7 @@ img {
   top: 0px;
   right: 0px;
   font-size: 20px;
-  color: lightgrey;
+  color: #66629d;
   padding: 0.25rem;
 }
 
@@ -155,4 +160,39 @@ footer {
 .app-footer {
   display: flex;
   justify-content: center;
+  padding-bottom: 2rem;
+  padding-top: 1.5rem;
+}
+
+.footer-icons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.footer-icons-sphere,
+.footer-icons-sphere-drk {
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  padding: 2rem;
+  font-size: 3rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icons-sphere {
+  background-color: #F8D038;
+}
+
+.footer-icons-sphere-drk {
+  background-color: #91E0E5;
+}
+
+a {
+  color: #AA305C;
 }
