@@ -33,7 +33,7 @@ The challenge is to build this app as a greenfield project, use React Hooks, and
 
 - built out all the JSX in the App.js file first
 - considered using Bootstrap for React since I just did a tutorial but after an initial start decided this was more trouble than it was worth for this project
-- Had issues with using ``` <picture> ``` element in the JSX so switched to using just an ``` <img> ``` element. Even then I stuggled to get the image file's path correct. I tried importing and naming the image and then using ``` src={image} ``` but this didn't work. Ended up putting the images in the Public folder instead of the src folder. Still not sure how happy I am with my choice but it worked 😊
+- Had issues with getting the image file's path correct. Initiall I had an images directory inside the src directory but I could not get the normal path of ```./images/file.png ``` to work. I tried importing and naming the image and then using ``` src={image} ``` but this didn't work either. Ended up putting the images in the Public folder instead of the src folder. Still not sure how happy I am with my choice but it worked 😊
 - 
 
 ### Fontawsome for React

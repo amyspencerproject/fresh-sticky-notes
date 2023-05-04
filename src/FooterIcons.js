@@ -4,7 +4,7 @@ import './App.css';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 
-const FooterIcon = () => {
+const FooterIcons = () => {
     return (
         <div className="footer-icons">
             <div className="footer-icons-sphere">
@@ -17,9 +17,9 @@ const FooterIcon = () => {
                 <a aria-label="View Amy on LinkedIn" href="https://www.linkedin.com/in/amyspencercodes/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedinIn} /></a>
             </div>
         </div> 
-    )
+    )   
 }
 
-export default FooterIcon
+export default FooterIcons
 
 
