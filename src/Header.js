@@ -12,7 +12,7 @@ const Header = (props) => {
         </picture>
         </div>
         <aside className="app-header__controls">
-          <button className="add-new">+ New Note</button>
+          <button className="add-new" onClick={props.addNote}>+ New Note</button>
           <input  className="search" type="text" placeholder="Type here to search" value={props.searchText} />
         </aside>
       </header>

@@ -9,30 +9,31 @@ import Footer from "./Footer.js";
 class App extends Component {
   state = 
   {notes: [{
-        id: 1,
-        title: "eat",
-        description: "reese peanut butter cups",
-        doesMatchSearch: true
-    },
-    {
-        id: 2,
-        title: "sleep",
-        description: "eight hours",
-        doesMatchSearch: true
-    },
-    {
-        id: 3,
-        title: "code",
-        description: "build an awesome ai",
-        doesMatchSearch: true
-    }],
-  searchText: "Search"
+    id: Date.now(),
+    title: "",
+    description: "",
+    doesMatchSearch: true}],
+  searchText: "Search now"
+  };
+
+  addNote = () => {
+    // pass this event handler method to the Header where the event listner is located
+    const newNote = {
+      id: Date.now(),
+      title: "",
+      description: "",
+      doesMatchSearch: true
+    };
+    // State needs to be copied and the new note added to the notes array
+    const newNotes = [newNote, ...this.state.notes];
+    // then the new notes array should be set as State and the UI should update
+    this.setState({ notes: newNotes });
   };
   
   render() {
     return (
     <div className="App">
-      <Header searchText={this.state.searchText} />
+      <Header searchText={this.state.searchText} addNote={this.addNote} />
       <NoteList notes={this.state.notes} />
       <Footer />
     </div>

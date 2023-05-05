@@ -34,9 +34,10 @@ The challenge is to build this app as a greenfield project, use React Hooks, and
 - built out all the JSX in the App.js file first
 - considered using Bootstrap for React since I just did a tutorial but after an initial start decided this was more trouble than it was worth for this project
 - Had issues with getting the image file's path correct. Initiall I had an images directory inside the src directory but I could not get the normal path of ```./images/file.png ``` to work. I tried importing and naming the image and then using ``` src={image} ``` but this didn't work either. Ended up putting the images in the Public folder instead of the src folder. Still not sure how happy I am with my choice but it worked 😊
-- 
+- When state components were added I had to remind myself that event handlers must be in the component that owns the state. You can not use setState outside of the state component. Event listeners can be in other components and can be passed as props or rather the reference of the event handler can be passed as props to the stateful component.
+- Remember to always copy state before updating it. This is important to not cause disruptions if something else is using that state. Also you never, never want to directly touch the DOM so copy, add, and then setState anew.
 
-### Fontawsome for React
+### FontAwsome for React
 installed font awesome's SVG core package
 ``` npm i --save @fortawesome/fontawesome-svg-core ```
 installed the free versions of icons
