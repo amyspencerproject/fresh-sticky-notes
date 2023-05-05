@@ -7,7 +7,7 @@ const NoteList = (props) => {
     // function returns doesMatchSearch = true elements to new array
     const searchMatches = props.notes.filter(keepSearchMatches);
     // call back function that pulls individual note elements 
-    const renderNote = (note) => <Note note={note} key={note.id}/>
+    const renderNote = (note) => <Note note={note} key={note.id} onType={props.onType}/>
     const noteElements = searchMatches.map((renderNote));
 
     return (

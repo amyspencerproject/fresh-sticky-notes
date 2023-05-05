@@ -36,6 +36,47 @@ The challenge is to build this app as a greenfield project, use React Hooks, and
 - Had issues with getting the image file's path correct. Initiall I had an images directory inside the src directory but I could not get the normal path of ```./images/file.png ``` to work. I tried importing and naming the image and then using ``` src={image} ``` but this didn't work either. Ended up putting the images in the Public folder instead of the src folder. Still not sure how happy I am with my choice but it worked 😊
 - When state components were added I had to remind myself that event handlers must be in the component that owns the state. You can not use setState outside of the state component. Event listeners can be in other components and can be passed as props or rather the reference of the event handler can be passed as props to the stateful component.
 - Remember to always copy state before updating it. This is important to not cause disruptions if something else is using that state. Also you never, never want to directly touch the DOM so copy, add, and then setState anew.
+- Dealing with specific value updates
+Shown below is the onType method that live in the App state component. This method takes three parameters, editMeID == id of note object changed & updatedKey == title or description that was updated in the note object & updatedValue == value of updated
+  - The 1st parameter that onType takes is the editMeID == id of note object changed. The event listener in the Note component will grab what id was changed. When on Type is passed to the Note component thru props this id will be available to change state in the App component.
+  - updatedNotes is where state is being copied but with some conditions to catch the changes. With ```map()``` each note object in the notes array is checked
+  - ```if``` note.id does not equal ``editMeId`` it means that editMeId does not exist. The only way editMeId exist is if the event listener created it. So if no editMeId then no user input and the note object is returned unchanged
+  - ```else``` there must have been an event listener triggered and an ```editMeId``` created and available. Then there needs to be a differentiation of what was updated in that note object
+  - ```if``` the ``updatedKey`` is "title" then the ``updatedValue`` needs to be udated in the note object
+  - ```else``` the ``updatedKey`` must be "description" and then that ``updatedValue`` should be updated in the note object
+  - then state can be updated with ```this.setstate()``` and the user will see the values they are typing in the UI
+
+``` 
+  onType = (editMeID, updatedKey, updatedValue) => {
+    const updatedNotes = this.state.notes.map( note => {
+      if (note.id !== editMeID) {
+          return note;
+        } else {
+          if (updatedKey === "title" ) {
+            note.title = updatedValue;
+            return note;
+          } else {
+            note.description = updatedValue;
+            return note;
+          }
+        }
+    })
+    this.setState({notes: updatedNotes});
+  }
+```
+- add event listeners to Note component
+  - for user changes to the title ``` onChange={updateTitle} value={props.note.title} ``` are used as attributes in the ``<input>`` for the title
+  - write event listener (below) for title changes in the Notes component. The parameters used in the ```onType``` event handler are assigned values here. So ```editMeId``` is created which begins the first of the if/else statements in the ```onType``` method.
+  ``` 
+    const Note = (props) => {
+
+    const updateTitle = (e) => {
+        const updatedValue = e.target.value;
+        const editMeId = props.note.id;
+        props.onType(editMeID, "title", updatedValue);
+    }
+    ``` 
+
 
 ### FontAwsome for React
 installed font awesome's SVG core package

@@ -3,7 +3,6 @@ import React from "react";
 const Header = (props) => {
     return (
         <header className="app-header">
-        {console.log(props)}
         <div className="header-image-container">
         <picture>
           <source media="(min-width: 1000px)" srcSet="./notes-desktop.png" />
