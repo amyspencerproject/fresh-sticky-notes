@@ -13,7 +13,7 @@ class App extends Component {
     title: "",
     description: "",
     doesMatchSearch: true}],
-  searchText: "Search now"
+  searchText: ""
   };
 
   addNote = () => {
@@ -47,12 +47,40 @@ class App extends Component {
     })
     this.setState({notes: updatedNotes});
   }
+
+  onSearch = (text) => {
+    const newSearchText = text.toLowerCase();
+    const updatedNotes = this.state.notes.map( note => {
+      if (!newSearchText) {
+        note.doesMatchSearch = true;
+        return note;
+      } else {
+        const title = note.title.toLowerCase();
+        const description = note.description.toLowerCase();
+        const titleMatch = title.includes(newSearchText);
+        const descriptionMatch = description.includes(newSearchText);
+        const hasMatch = titleMatch || descriptionMatch;
+        note.doesMatchSearch = hasMatch;
+        return note;
+      }
+    })
+    this.setState(
+      {notes: updatedNotes,
+      searchText: newSearchText
+    });
+  }
+
+  onDelete = (deleteMeId) => {
+    const updatedNotes = this.state.notes.filter( note => note.id !== deleteMeId)
+    this.setState({ notes: updatedNotes})
+  }
+
   
   render() {
     return (
     <div className="App">
-      <Header searchText={this.state.searchText} addNote={this.addNote} />
-      <NoteList notes={this.state.notes} onType={this.onType} />
+      <Header searchText={this.state.searchText} addNote={this.addNote} onSearch={this.onSearch} />
+      <NoteList notes={this.state.notes} onType={this.onType} onDelete={this.onDelete} />
       <Footer />
     </div>
     );

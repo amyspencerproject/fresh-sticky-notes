@@ -77,6 +77,62 @@ Shown below is the onType method that live in the App state component. This meth
     }
     ``` 
 
+- add event handler for Search functionality
+  - in App create a ``onSearch`` method that will be passed thru props to the Header component
+  - first need to ``map()`` over the ``state.notes`` array
+  - need to turn all text strings (search string, the note's title and description) into the same case. Use a new consts to do this so nothing is permanently changed in the UI or in state.
+    -  `const newSearchText = text.lowerCase();`
+    -  ``const title = note.title.toLowerCase();`` and ``const description = note.description.toLowerCase();``
+  - check each scenario that a user could make. I intially had this too simplified not taking into account if a user started to type in the search and then deleted the search. The first ``if`` statement covers this and would reset the doesMatchSearch to true so they wouldn't lose a note unintentionally. 
+  - in the ``else`` statement the search text is compared to the title and the description text using an ``includes()`` method.
+  - two new constants, ``titleMatch`` and ``descriptionMatch`` are created that return true for a match and false for no match
+  - intitially I coded another set of if/else statements to cover the possible boolean outcomes for the new constants
+    ``` 
+        if (titleMatch) {
+          note.doesMatchSearch = true;
+        } else if (descriptionMatch) {
+          note.doesMatchSearch = true;
+        } else {
+          note.doesMatchSearch = false;
+        }
+        return note;
+    ```
+  - However there is a more consise way to do this by makeing another constant ``hasMatch`` and set it equal to a boolean statement. `` const hasMatch = titleMatch || descriptionMatch``. If ``titleMatch`` or (``||``)`` descriptionMatch`` is false then hasMatch will be false but if one or both are true the it will be true. Now the doesMatchSearch can just be set to the value of ``hasMatch``.
+
+```
+onSearch = (text) => {
+    const newSearchText = text.toLowerCase();
+    const updatedNotes = this.state.notes.map( note => {
+      if (!newSearchText) {
+        note.doesMatchSearch = true;
+        return note;
+      } else {
+        const title = note.title.toLowerCase();
+        const description = note.description.toLowerCase();
+        const titleMatch = title.includes(newSearchText);
+        const descriptionMatch = description.includes(newSearchText);
+        const hasMatch = titleMatch || descriptionMatch;
+        note.doesMatchSearch = hasMatch;
+        return note;
+      }
+    })
+  }
+```
+- make event listenser for Search function in the Header component
+  - use an ``onChange`` listener as an attribute in the search ``<input>`` element
+  - add a constant called ``updateSearch``  that the ``onChange`` will trigger
+  - updateSearch will grab the target value from onChange and send it to the App component
+  ```
+  const updateSearch = (e) => {
+    const text = e.target.value;
+    props.onSearch(text);
+  }
+  ```
+- make an event listener and handler for Deleting a note. 
+  - add ``onClick`` to the ``<span>`` element in the note
+  - write a very simple event listener. do not even need to catch a target.value or use e as a parameter
+  - in the App component create a ``onDelete`` method to pass thru props to NoteList
+  - use ``filter()`` to keep only notes whose ``note.id !== deleteMeId`` from event listener
 
 ### FontAwsome for React
 installed font awesome's SVG core package
@@ -114,3 +170,11 @@ and the used this format for JSX
 - Website - [Amy Spencer](https://spencerproject.com/)
 - Frontend Mentor - [@amyspencerproject](https://www.frontendmentor.io/profile/amyspencerproject)
 - Linkedin - [amyspencercodes](https://www.linkedin.com/in/amyspencercodes/)
+
+```
+const updateSearch = (e) => {
+    props.onSearch(text);
+    const text = e.target.value;
+    
+  }
+```

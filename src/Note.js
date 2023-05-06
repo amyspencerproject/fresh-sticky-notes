@@ -14,11 +14,17 @@ const Note = (props) => {
         const editMeId = props.note.id;
         props.onType(editMeId, "descriptionn", updatedValue);
     }
+
+    const deleteNote = () => {
+        const deleteMeId = props.note.id;
+        props.onDelete(deleteMeId)
+    }
+
     return (
         <li className="note" key={props.note.id}>
             <input className="note__title" type="text" placeholder="Title" onChange={updateTitle} value={props.note.title} />
             <textarea className="note__description" placeholder="Description" onChange={updateDescription} value={props.note.description}></textarea>
-            <span className="note__delete">X</span>
+            <span className="note__delete" onClick={deleteNote}>X</span>
         </li>
     )
 }

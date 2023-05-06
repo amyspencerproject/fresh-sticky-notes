@@ -1,6 +1,10 @@
 import React from "react";
 
 const Header = (props) => {
+  const updateSearch = (e) => {
+    const text = e.target.value;
+    props.onSearch(text);
+  }
     return (
         <header className="app-header">
         <div className="header-image-container">
@@ -12,10 +16,10 @@ const Header = (props) => {
         </div>
         <aside className="app-header__controls">
           <button className="add-new" onClick={props.addNote}>+ New Note</button>
-          <input  className="search" type="text" placeholder="Type here to search" value={props.searchText} />
+          <input  className="search" type="text" placeholder="Type here to search" onChange={updateSearch} value={props.searchText} />
         </aside>
       </header>
-    )
-}
+    );
+};
 
 export default Header
