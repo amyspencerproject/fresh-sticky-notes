@@ -3,8 +3,6 @@ import Header from "./Header.js"
 import NoteList from "./NoteList.js";
 import Footer from "./Footer.js";
 
-// import { notesData } from "./data.js";
-
 
 class App extends Component {
   state = 
@@ -73,6 +71,19 @@ class App extends Component {
   onDelete = (deleteMeId) => {
     const updatedNotes = this.state.notes.filter( note => note.id !== deleteMeId)
     this.setState({ notes: updatedNotes})
+  }
+
+  componentDidUpdate() {
+    const savedNotesString = JSON.stringify(this.state.notes);
+    localStorage.setItem("savedNotesString", savedNotesString);
+  }
+
+  componentDidMount() {
+    const savedNotesString = localStorage.getItem("savedNotesString");
+    if (savedNotesString) {
+      const savedNotes = JSON.parse(savedNotesString);
+      this.setState({notes: savedNotes})
+    }
   }
 
   

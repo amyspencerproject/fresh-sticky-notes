@@ -25,11 +25,19 @@ The challenge is to build this app as a greenfield project, use React Hooks, and
 - [Styling the placeholder](https://medium.com/@samanthaming/styling-placeholder-text-with-css-9a2a608b68bc)
 - [Fontawesome with React](https://dev.to/davidemaye/how-to-set-up-font-awesome-in-react-5a8d)
 
+### What I learned
+
+This project was intended as a review of the basics of building with React but extended into Figma, Bootstrap. 
+  - Figma: This was my first time actually creating a website design in Figma (as opposed to using a design spec in Figma). Figma is fairly intuitive so I just figured out as I went how to use some of the features e.g. creating components and grouping items. 
+  - Bootstrap for React: I had recently gone thru a tutorial on Bootstrap and thought I would give it a try with React. Pretty quickly decided this was not the way to go. I was suprised by the amount of dependecies needed. Then I needed to import each Bootstrap feature I wanted to use. Since I am a novice with Bootstrap this felt like to much of a burden for this project's goal of reveiwing React. 
+  - FontAwesome for React: This was a great opportunity to learn how to integrate FontAwesome icons into React.
+  - Componenet Tree: I have found that planning ahead and seeing the big picture of a coding project is important for success. I took the time to think about what each component's purpose was either being a presentational or container (stateful) component. When you are starting to code you can get bogged down in the details and lose sight of the overall goal. Having a component tree and plotting out what the user will need to do helps keep me on track.
+  - React: I found that I have retained quite a lot of the React basics I was taught in my Boot camp course. This time around I had a much deeper understanding of why React is so versitile and fast. I did not appreciate the efficiency of using the Virtual DOM for only updating the parts of the DOM that changed and not the whole thing.
+
+
 ## My process
 - started with mapping out which components would be container components and presentational components based on what the app should do and where the user data would flow.
 - designed the app in Figma [Fresh Sticky Notes](https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FrOMYTzRhT9IsdPX5sqAYqf%2FFresh-Sticky-Notes-React-Project%3Fnode-id%3D0%253A1%26t%3DCbzTznrTPD52l6Ca-1)
-
-
 
 - built out all the JSX in the App.js file first
 - considered using Bootstrap for React since I just did a tutorial but after an initial start decided this was more trouble than it was worth for this project
@@ -46,7 +54,7 @@ Shown below is the onType method that live in the App state component. This meth
   - ```else``` the ``updatedKey`` must be "description" and then that ``updatedValue`` should be updated in the note object
   - then state can be updated with ```this.setstate()``` and the user will see the values they are typing in the UI
 
-``` 
+  ``` 
   onType = (editMeID, updatedKey, updatedValue) => {
     const updatedNotes = this.state.notes.map( note => {
       if (note.id !== editMeID) {
@@ -63,7 +71,9 @@ Shown below is the onType method that live in the App state component. This meth
     })
     this.setState({notes: updatedNotes});
   }
-```
+
+  ```
+
 - add event listeners to Note component
   - for user changes to the title ``` onChange={updateTitle} value={props.note.title} ``` are used as attributes in the ``<input>`` for the title
   - write event listener (below) for title changes in the Notes component. The parameters used in the ```onType``` event handler are assigned values here. So ```editMeId``` is created which begins the first of the if/else statements in the ```onType``` method.
@@ -99,7 +109,7 @@ Shown below is the onType method that live in the App state component. This meth
     ```
   - However there is a more consise way to do this by makeing another constant ``hasMatch`` and set it equal to a boolean statement. `` const hasMatch = titleMatch || descriptionMatch``. If ``titleMatch`` or (``||``)`` descriptionMatch`` is false then hasMatch will be false but if one or both are true the it will be true. Now the doesMatchSearch can just be set to the value of ``hasMatch``.
 
-```
+``` 
 onSearch = (text) => {
     const newSearchText = text.toLowerCase();
     const updatedNotes = this.state.notes.map( note => {
@@ -133,6 +143,9 @@ onSearch = (text) => {
   - write a very simple event listener. do not even need to catch a target.value or use e as a parameter
   - in the App component create a ``onDelete`` method to pass thru props to NoteList
   - use ``filter()`` to keep only notes whose ``note.id !== deleteMeId`` from event listener
+    - The ``filter()`` function takes the current state and filters it against the ID passed in as an argument. If the ID does not match the ID of the task currently being iterated over, the task gets pushed into the new filtered array. If the ID does match, then it gets rejected by the filter function.
+
+- Added Lifecycle methods, ``componentDidUpdate()`` and ``componentDidMount()`` to preserve the user's notes between sessions
 
 ### FontAwsome for React
 installed font awesome's SVG core package
@@ -146,6 +159,7 @@ installed font awesome React component
 ``` npm i --save @fortawesome/react-fontawesome@latest ```
 
 checked the package.json file and saw five new dependencies
+
 ![screenshot of package.json file](./fontawesome-package-json-screenshot.png)
 
 imported individual icons as opposed to dynamic or global imports
@@ -162,19 +176,8 @@ and the used this format for JSX
 ** Warning! The fontawesome website gives all individual icon components with camelCase but it doesn't work in React when importing or calling icons. So faGitHub is what is in documentation for v6.4.0 but faGithub is what actually works. Not sure if this is an issue of different versions of fontawesome but seeing as I followed their directions and installed the lastest version of fontawesome ```@fortawesome/react-fontawesome@latest ``` I am not sure.
 
 
-### What I learned
-
-
 ## Author
 
 - Website - [Amy Spencer](https://spencerproject.com/)
 - Frontend Mentor - [@amyspencerproject](https://www.frontendmentor.io/profile/amyspencerproject)
 - Linkedin - [amyspencercodes](https://www.linkedin.com/in/amyspencercodes/)
-
-```
-const updateSearch = (e) => {
-    props.onSearch(text);
-    const text = e.target.value;
-    
-  }
-```
