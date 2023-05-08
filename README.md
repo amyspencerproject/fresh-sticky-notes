@@ -15,7 +15,7 @@
 ## Overview
 
 ### The challenge
-The challenge is to build this app as a greenfield project, use React Hooks, and take the css styling a little further. This app is an update from an app I first built as a lesson from Skillcrush.
+The challenge is to build this app as a greenfield project, use a design spec, and review how to build and app with React.
 
 
 ### Resouces
