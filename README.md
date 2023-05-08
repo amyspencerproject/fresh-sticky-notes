@@ -7,15 +7,16 @@
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Resources](#resouces)
-- [My process](#my-process)
   - [What I learned](#what-i-learned)
+- [My process](#my-process)
+  - [FontAwsome for React](#fontawsome-for-react)
 - [Author](#author)
 
 
 ## Overview
 
 ### The challenge
-The challenge is to build this app as a greenfield project, use a design spec, and review how to build and app with React.
+The challenge is to build this app as a greenfield project, use a design spec, and review how to build an app with React.
 
 
 ### Resouces
@@ -146,6 +147,11 @@ onSearch = (text) => {
     - The ``filter()`` function takes the current state and filters it against the ID passed in as an argument. If the ID does not match the ID of the task currently being iterated over, the task gets pushed into the new filtered array. If the ID does match, then it gets rejected by the filter function.
 
 - Added Lifecycle methods, ``componentDidUpdate()`` and ``componentDidMount()`` to preserve the user's notes between sessions
+- Added directions for the first time user in three notes. Imorted these notes from data.js file. 
+- Wanted to let a user options for the search input field.
+  - added a ```<form>``` element around the ``<input>`` so that when a user hit enter an onSubmit event listener would be trigged.
+  - if an enter to holds the search constraints then will need a clear/return home button
+  - want an esc key to clear out the search text
 
 ### FontAwsome for React
 installed font awesome's SVG core package

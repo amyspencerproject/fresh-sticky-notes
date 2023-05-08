@@ -8,24 +8,7 @@ import {notesData} from "./data.js";
 
 class App extends Component {
   state = 
-  {notes: [{
-    id: 101,
-    title: "Title your note",
-    description: "Write anything you like in your note",
-    doesMatchSearch: true
-    },
-    {
-      id: 102,
-      title: "New Note",
-      description: "Click on +New Note to get many more notes 😊",
-      doesMatchSearch: true
-    },
-    {
-        id: 103,
-        title: "Search",
-        description: "Type in the search field to search for keyword or phrase such as Hot Sauce 🌶️🌶️🌶️",
-        doesMatchSearch: true
-    }],
+  {notes: notesData,
   searchText: ""
   };
 
@@ -98,6 +81,8 @@ class App extends Component {
     if (savedNotesString) {
       const savedNotes = JSON.parse(savedNotesString);
       this.setState({notes: savedNotes})
+    } else {
+      this.setState({notes: notesData})
     }
   }
 
@@ -105,6 +90,7 @@ class App extends Component {
   render() {
     return (
     <div className="App">
+    {console.log(this.state.notes)}
       <Header searchText={this.state.searchText} addNote={this.addNote} onSearch={this.onSearch} />
       <NoteList notes={this.state.notes} onType={this.onType} onDelete={this.onDelete} />
       <Footer />
