@@ -2,7 +2,7 @@ export const notesData = [
     {
     id: 101,
     title: "Title your note",
-    description: "Write anything you like in your note",
+    description: "Write ✏️ anything and everything in a note. You can always edit and delete your notes.",
     doesMatchSearch: true
     },
     {
