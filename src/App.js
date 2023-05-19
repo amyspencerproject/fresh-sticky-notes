@@ -3,14 +3,12 @@ import Header from "./Header.js"
 import NoteList from "./NoteList.js";
 import Footer from "./Footer.js";
 
+import {notesData} from "./data.js";
+
 
 class App extends Component {
   state = 
-  {notes: [{
-    id: Date.now(),
-    title: "",
-    description: "",
-    doesMatchSearch: true}],
+  {notes: notesData,
   searchText: ""
   };
 
@@ -83,6 +81,8 @@ class App extends Component {
     if (savedNotesString) {
       const savedNotes = JSON.parse(savedNotesString);
       this.setState({notes: savedNotes})
+    } else {
+      this.setState({notes: notesData})
     }
   }
 
@@ -90,6 +90,7 @@ class App extends Component {
   render() {
     return (
     <div className="App">
+    {console.log(this.state.notes)}
       <Header searchText={this.state.searchText} addNote={this.addNote} onSearch={this.onSearch} />
       <NoteList notes={this.state.notes} onType={this.onType} onDelete={this.onDelete} />
       <Footer />

@@ -5,6 +5,7 @@ const Header = (props) => {
     const text = e.target.value;
     props.onSearch(text);
   }
+
     return (
         <header className="app-header">
         <div className="header-image-container">
@@ -16,7 +17,9 @@ const Header = (props) => {
         </div>
         <aside className="app-header__controls">
           <button className="add-new" onClick={props.addNote}>+ New Note</button>
-          <input  className="search" type="text" placeholder="Type here to search" onChange={updateSearch} value={props.searchText} />
+          <form>
+            <input  className="search" type="text" placeholder="Type here to search" onChange={updateSearch} onSubmit={updateSearch} value={props.searchText} />
+          </form>
         </aside>
       </header>
     );
